@@ -16,6 +16,7 @@ class Roles extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
+            $table->integer('nivel');
             $table->timestamps();
         });
     }

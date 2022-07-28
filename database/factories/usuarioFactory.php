@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Rol;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class usuarioFactory extends Factory
@@ -22,7 +23,7 @@ class usuarioFactory extends Factory
             'direccion' => $this->faker->address(),
             'telefono' => $this->faker->phoneNumber(),
             'activo' => $this->faker->boolean(),
-            'rol_id' => $this->faker->numberBetween(1, 3),
+            'rol_id' => $this->faker->boolean() ? Rol::all()->random()->id : null,
         ];
     }
 }
