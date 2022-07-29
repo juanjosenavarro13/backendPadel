@@ -9,9 +9,9 @@ use App\Http\Controllers\UsuarioController;
 
 
 Route::group(['middleware' => 'api'], function ($router) {
-    Route::post('/usuario/login', [UsuarioController::class, 'login']);
-    Route::post('/usuario/register', [UsuarioController::class, 'register']);
-    Route::post('/usuario/logout', [UsuarioController::class, 'logout']);
-    Route::post('/usuario/refresh', [UsuarioController::class, 'refresh']);
-    Route::post('/usuario/me', [UsuarioController::class, 'me']);
+    Route::post('/auth/login', [UsuarioController::class, 'login']);
+    Route::post('/auth/register', [UsuarioController::class, 'register']);
+    Route::post('/auth/logout', [UsuarioController::class, 'logout']);
+    Route::post('/auth/refresh', [UsuarioController::class, 'refresh']);
+    Route::post('/auth/me', [UsuarioController::class, 'me']);
 });
