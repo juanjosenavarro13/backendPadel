@@ -15,7 +15,7 @@ class rolFactory extends Factory
     {
         return [
             'nombre' => $this->faker->name(),
-            'nivel' => $this->faker->numberBetween(1, 5),
+            'nivel' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

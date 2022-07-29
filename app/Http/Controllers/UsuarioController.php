@@ -55,7 +55,7 @@ class UsuarioController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:usuarios',
-            'name' => 'required|string',
+            'nombre' => 'required|string',
             'password' => 'required|string|confirmed|min:6',
         ]);
 
@@ -64,7 +64,7 @@ class UsuarioController extends Controller
         } else {
             $user = Usuario::create([
                 'email' => $request->get('email'),
-                'nombre' => $request->get('name'),
+                'nombre' => $request->get('nombre'),
                 'password' => bcrypt($request->get('password')),
             ]);
 

@@ -23,8 +23,8 @@ class Usuarios extends Migration
             $table->string('direccion')->nullable();
             $table->string('telefono')->nullable();
             $table->boolean('activo')->default(false);
-            $table->unsignedBigInteger('rol_id')->default(1)->nullable();
-            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('set null');
+            $table->unsignedBigInteger('rol_id')->default(null)->nullable();
+            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('set null')->nullable();
             $table->timestamps();
         });
     }
