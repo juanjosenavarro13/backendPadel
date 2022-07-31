@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        rol::factory(5)->create();
         usuario::factory(100)->create();
     }
 }

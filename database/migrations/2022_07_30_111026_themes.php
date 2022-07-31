@@ -18,6 +18,7 @@ class Themes extends Migration
             $table->string('nombre')->unique();
             $table->string('primary_color');
             $table->string('secondary_color');
+            $table->string('tertiary_color');
             $table->timestamps();
         });
     }
