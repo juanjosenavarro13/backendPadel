@@ -17,6 +17,15 @@ class UsuarioController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
+        $usuario = Usuario::where('email', $credentials['email'])->first();
+        if (!$usuario) {
+            return response()->json([
+                'message' => 'Usuario no encontrado'
+            ], 404);
+        }
+        if ($usuario->activo === 0) {
+            return response()->json(['error' => 'Usuario no activo'], 401);
+        }
 
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
