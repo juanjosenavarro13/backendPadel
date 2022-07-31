@@ -9,7 +9,7 @@ class ConfigurationController extends Controller
 {
     public function index()
     {
-        $config = Configuration::all();
+        $config = Configuration::first();
         return response()->json($config);
     }
 }
