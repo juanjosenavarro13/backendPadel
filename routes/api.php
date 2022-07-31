@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\ConfigurationController;
 
 
 Route::get('/login', function () {
@@ -23,4 +24,8 @@ Route::group(['middleware' => 'api'], function ($router) {
 
 Route::prefix('themes')->group(function () {
     Route::get('/getThemes', [ThemeController::class, 'getThemes']);
+});
+
+Route::prefix('config')->group(function () {
+    Route::get('/get', [ConfigurationController::class, 'index']);
 });
