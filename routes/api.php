@@ -6,7 +6,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ThemeController;
 
 
-
+Route::get('/login', function () {
+    return response()->json("error login", 401);
+})->name('login');
 
 
 Route::group(['middleware' => 'api'], function ($router) {

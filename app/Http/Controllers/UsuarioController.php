@@ -57,20 +57,31 @@ class UsuarioController extends Controller
             'email' => 'required|email|unique:usuarios',
             'nombre' => 'required|string',
             'password' => 'required|string|confirmed|min:6',
+            'apellidos' => 'string|nullable',
+            'telefono' => 'string|min:9|nullable',
+            'direccion' => 'string|nullable',
+            'fecha_nacimiento' => 'date|nullable',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         } else {
-            $user = Usuario::create([
-                'email' => $request->get('email'),
-                'nombre' => $request->get('nombre'),
-                'password' => bcrypt($request->get('password')),
-            ]);
+            $user = new Usuario();
+            $user->email = $request->email;
+            $user->nombre = $request->nombre;
+            $user->password = bcrypt($request->password);
+            $user->apellidos = $request->apellidos;
+            $user->telefono = $request->telefono;
+            $user->direccion = $request->direccion;
+            $user->fecha_nacimiento = $request->fecha_nacimiento;
+            $user->save();
 
-            $token = auth()->login($user);
-
-            return $this->respondWithToken($token);
+            return response()->json([
+                'message' => 'Usuario registrado correctamente',
+                'user' => $user
+            ], 201);
+            // $token = auth()->login($user);
+            // return $this->respondWithToken($token);
         }
     }
 }
