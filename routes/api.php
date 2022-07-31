@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\RolController;
 
 
 Route::get('/login', function () {
@@ -28,4 +29,8 @@ Route::prefix('themes')->group(function () {
 
 Route::prefix('config')->group(function () {
     Route::get('/get', [ConfigurationController::class, 'index']);
+});
+
+Route::prefix('rol')->group(function () {
+    Route::get('/getRolById/{id}', [RolController::class, 'getRolById']);
 });
