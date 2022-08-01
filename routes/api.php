@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\PartidoController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\PistaController;
 
@@ -38,4 +39,8 @@ Route::prefix('rol')->group(function () {
 
 Route::prefix('pistas')->group(function () {
     Route::get('/getPistas', [PistaController::class, 'getPistas']);
+});
+
+Route::prefix('partidos')->group(function () {
+    Route::get('/byDate/{fecha}', [PartidoController::class, 'getPartidosByDate']);
 });
