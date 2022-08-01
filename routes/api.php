@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\PistaController;
 
 
 Route::get('/login', function () {
@@ -33,4 +34,8 @@ Route::prefix('config')->group(function () {
 
 Route::prefix('rol')->group(function () {
     Route::get('/getRolById/{id}', [RolController::class, 'getRolById']);
+});
+
+Route::prefix('pistas')->group(function () {
+    Route::get('/getPistas', [PistaController::class, 'getPistas']);
 });
