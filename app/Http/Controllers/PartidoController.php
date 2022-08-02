@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Partido;
 use App\Models\Usuario;
+use App\Models\Pista;
 
 class PartidoController extends Controller
 {
@@ -36,10 +37,13 @@ class PartidoController extends Controller
 
         $partidos = Partido::select('partidos.*')
             ->whereBetween('fecha', [$fechaInicio, $fechaFin])
+            ->orderBy('pista_id', 'asc')
             ->orderBy('fecha', 'asc')
             ->get();
 
         foreach ($partidos as $partido) {
+            $partido->pista = Pista::find($partido->pista_id);
+
             $partido->jugador1 = Usuario::select('usuarios.*')
                 ->where('id', $partido->id_jugador1)->first();
             $partido->jugador2 = Usuario::select('usuarios.*')
