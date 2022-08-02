@@ -43,4 +43,5 @@ Route::prefix('pistas')->group(function () {
 
 Route::prefix('partidos')->group(function () {
     Route::get('/byDate/{fecha}', [PartidoController::class, 'getPartidosByDate']);
+    Route::get('/getPartidosSemana/{fecha}', [PartidoController::class, 'getPartidosSemana']);
 });
