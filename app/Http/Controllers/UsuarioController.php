@@ -93,4 +93,10 @@ class UsuarioController extends Controller
             // return $this->respondWithToken($token);
         }
     }
+
+    public function getUsuarios()
+    {
+        $usuarios = Usuario::paginate(10);
+        return response()->json($usuarios);
+    }
 }
