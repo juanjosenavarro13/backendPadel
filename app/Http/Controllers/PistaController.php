@@ -12,4 +12,14 @@ class PistaController extends Controller
         $pistas = Pista::all();
         return response()->json($pistas);
     }
+
+    public function getPistaById($id)
+    {
+        $pista = Pista::find($id);
+        if ($pista) {
+            return response()->json($pista);
+        } else {
+            return response()->json("Pista no encontrada", 404);
+        }
+    }
 }
