@@ -96,7 +96,54 @@ class UsuarioController extends Controller
 
     public function getUsuarios()
     {
-        $usuarios = Usuario::paginate(10);
+        $usuarios = Usuario::select('usuarios.*', 'roles.nombre as rol')
+            ->leftjoin('roles', 'usuarios.rol_id', '=', 'roles.id')
+            ->OrderBy('id', 'desc')->paginate(10);
         return response()->json($usuarios);
+    }
+
+    public function searchUsuarios()
+    {
+        $usuarios = Usuario::orderBy('nombre', 'asc')->orderBy('apellidos', 'asc')->get();
+        return response()->json($usuarios);
+    }
+
+    public function findUser($id)
+    {
+        $usuario = Usuario::select('usuarios.*', 'roles.nombre as rol')
+            ->leftjoin('roles', 'usuarios.rol_id', '=', 'roles.id')
+            ->find($id);
+        return response()->json($usuario);
+    }
+
+    public function updateUser(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:usuarios,email,' . $request->id,
+            'nombre' => 'required|string',
+            'apellidos' => 'string|nullable',
+            'telefono' => 'string|min:9|nullable',
+            'direccion' => 'string|nullable',
+            'fecha_nacimiento' => 'date|nullable',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        } else {
+            $user = Usuario::find($request->id);
+            $user->email = $request->email;
+            $user->nombre = $request->nombre;
+            $user->activo = $request->activo;
+            $user->apellidos = $request->apellidos;
+            $user->telefono = $request->telefono;
+            $user->direccion = $request->direccion;
+            $user->fecha_nacimiento = $request->fecha_nacimiento;
+            $user->save();
+
+            return response()->json([
+                'message' => 'Usuario actualizado correctamente',
+                'user' => $user
+            ], 201);
+        }
     }
 }

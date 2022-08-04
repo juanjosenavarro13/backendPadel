@@ -27,6 +27,9 @@ Route::group(['middleware' => 'api'], function ($router) {
 
 Route::prefix('usuarios')->group(function () {
     Route::get('/getUsuarios', [UsuarioController::class, 'getUsuarios']);
+    Route::get('/searchUsuarios', [UsuarioController::class, 'searchUsuarios']);
+    Route::get('/findUser/{id}', [UsuarioController::class, 'findUser']);
+    Route::put('/updateUser', [UsuarioController::class, 'updateUser']);
 });
 
 Route::prefix('themes')->group(function () {
