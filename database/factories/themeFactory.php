@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class rolFactory extends Factory
+class themeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,10 @@ class rolFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => $this->faker->name(),
-            'nivel' => $this->faker->unique()->numberBetween(1, 10),
+            'nombre' => 'negro',
+            'primary_color' => 'dark',
+            'secondary_color' => 'dark',
+            'tertiary_color' => 'light',
         ];
     }
 }
