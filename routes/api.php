@@ -48,6 +48,7 @@ Route::prefix('pistas')->group(function () {
     Route::get('/getPistas', [PistaController::class, 'getPistas']);
     Route::get('/getPistaById/{id}', [PistaController::class, 'getPistaById']);
     Route::put('/updatePista/{id}', [PistaController::class, 'updatePista']);
+    Route::delete('/deletePista/{id}', [PistaController::class, 'deletePista']);
 });
 
 Route::prefix('partidos')->group(function () {

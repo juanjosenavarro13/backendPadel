@@ -34,4 +34,15 @@ class PistaController extends Controller
             return response()->json("Pista no encontrada", 404);
         }
     }
+
+    public function deletePista($id)
+    {
+        $pista = Pista::find($id);
+        if ($pista) {
+            $pista->delete();
+            return response()->json("Pista eliminada", 200);
+        } else {
+            return response()->json("Pista no encontrada", 404);
+        }
+    }
 }
