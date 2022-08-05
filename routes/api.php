@@ -47,6 +47,7 @@ Route::prefix('rol')->group(function () {
 Route::prefix('pistas')->group(function () {
     Route::get('/getPistas', [PistaController::class, 'getPistas']);
     Route::get('/getPistaById/{id}', [PistaController::class, 'getPistaById']);
+    Route::put('/updatePista/{id}', [PistaController::class, 'updatePista']);
 });
 
 Route::prefix('partidos')->group(function () {
