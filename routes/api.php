@@ -38,6 +38,7 @@ Route::prefix('themes')->group(function () {
 
 Route::prefix('config')->group(function () {
     Route::get('/get', [ConfigurationController::class, 'index']);
+    Route::get('/stats', [ConfigurationController::class, 'stats']);
 });
 
 Route::prefix('rol')->group(function () {
