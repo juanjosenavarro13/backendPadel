@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pista;
+use Illuminate\Support\Facades\Validator;
 
 class PistaController extends Controller
 {
@@ -44,5 +45,17 @@ class PistaController extends Controller
         } else {
             return response()->json("Pista no encontrada", 404);
         }
+    }
+
+    public function createPista(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:255',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        $pista = Pista::create($request->all());
+        return response()->json($pista, 201);
     }
 }
