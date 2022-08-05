@@ -18,4 +18,11 @@ class RolController extends Controller
         $roles = Rol::all();
         return response()->json($roles);
     }
+
+    public function delete($id)
+    {
+        $rol = Rol::find($id);
+        $rol->delete();
+        return response()->json(['success' => 'Rol eliminado correctamente.']);
+    }
 }
