@@ -43,6 +43,7 @@ Route::prefix('config')->group(function () {
 
 Route::prefix('rol')->group(function () {
     Route::get('/getRolById/{id}', [RolController::class, 'getRolById']);
+    Route::get('/getRoles', [RolController::class, 'getRoles']);
 });
 
 Route::prefix('pistas')->group(function () {

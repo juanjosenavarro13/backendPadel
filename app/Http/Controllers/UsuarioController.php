@@ -138,6 +138,7 @@ class UsuarioController extends Controller
             $user->telefono = $request->telefono;
             $user->direccion = $request->direccion;
             $user->fecha_nacimiento = $request->fecha_nacimiento;
+            $user->rol_id = $request->rol_id;
             $user->save();
 
             return response()->json([
