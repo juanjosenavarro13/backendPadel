@@ -1,0 +1,13 @@
+- crear eliminar editar roles
+- ver pistas semanales y mover a semanas anteriores o posteriores
+- crear nueva pista
+- crear nuevo usuario desde administracion
+- crear editar o eliminar roles
+- poder eliminar usuarios
+
+- editar pistas sobre la misma tabla en la que se muestra
+- actualizar table de configurations
+
+
+[UPDATES]
+-revisar validaciones y usar clase IS-VALID o IS-INVALID como en la creacion de nueva pista
