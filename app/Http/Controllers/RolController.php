@@ -25,4 +25,13 @@ class RolController extends Controller
         $rol->delete();
         return response()->json(['success' => 'Rol eliminado correctamente.']);
     }
+
+    public function edit(Request $request)
+    {
+        $rol = Rol::find($request->id);
+        $rol->nombre = $request->nombre;
+        $rol->nivel = $request->nivel;
+        $rol->save();
+        return response()->json(['success' => 'Rol editado correctamente.']);
+    }
 }
