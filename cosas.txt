@@ -1,4 +1,3 @@
-- crear eliminar editar roles
 - ver pistas semanales y mover a semanas anteriores o posteriores
 - crear nueva pista
 - crear nuevo usuario desde administracion

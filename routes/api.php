@@ -46,6 +46,7 @@ Route::prefix('rol')->group(function () {
     Route::get('/getRoles', [RolController::class, 'getRoles']);
     Route::delete('/delete/{id}', [RolController::class, 'delete']);
     Route::put('/edit', [RolController::class, 'edit']);
+    Route::post('/createRole', [RolController::class, 'createRole']);
 });
 
 Route::prefix('pistas')->group(function () {
